@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 7699e6a1529eb00418c0aea1ea8f3999
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Unit_Bacteria: {fileID: 6387987066005739859, guid: 013f614adaa3a3048b3d77bcfec2f16f, type: 3}
+  - Tier1Units: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
