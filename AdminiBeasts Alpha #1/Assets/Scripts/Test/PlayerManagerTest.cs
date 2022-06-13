@@ -11,7 +11,7 @@ public class PlayerManagerTest : NetworkBehaviour
 
   List<Object_Tier1_Unit> inventory_Unit = new List<Object_Tier1_Unit>();
 
-
+  
   public override void OnStartClient()
   {
     base.OnStartClient();
