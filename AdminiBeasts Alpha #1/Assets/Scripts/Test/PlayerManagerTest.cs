@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Mirror;
 
 public class PlayerManagerTest : NetworkBehaviour
@@ -9,7 +10,7 @@ public class PlayerManagerTest : NetworkBehaviour
   public GameObject area_player_spawn;
   public GameObject area_enemy_spawn;
 
-  List<Object_Tier1_Unit> inventory_Unit = new List<Object_Tier1_Unit>();
+  List<GameObject> inventory_Unit = new List<GameObject>();
 
   
   public override void OnStartClient()
@@ -19,43 +20,31 @@ public class PlayerManagerTest : NetworkBehaviour
     area_enemy_spawn = GameObject.Find("InGameUnitArea_EnemySpawn");
   }
   [Command]
-  public void CmdUnit_Choose(Object_Tier1_Unit value)
+  public void CmdUnit_Choose()
   {
-    inventory_Unit.Add(value);
-    print(inventory_Unit);
+    GameObject unit = GameObject.Find("Button_PlayerInventory_Slot1").transform.GetChild(0).gameObject;
+    inventory_Unit.Add(unit);
+    print(">"+unit.transform.Find("Unit_Attack_Displayed").GetComponent<Text>().text+"<dass interressiert uns");
   }
 
-  public void OnClick_Inv0()
-  {
-    CmdUnit_Spawn(0);
-  }
-  public void OnClick_Inv1()
-  {
-    CmdUnit_Spawn(1);
-  }
-  public void OnClick_Inv2()
-  {
-    CmdUnit_Spawn(2);
-  }
-  public void OnClick_Inv3()
-  {
-    CmdUnit_Spawn(3);
-  }
+
 
   [Command]
-  public void CmdUnit_Spawn(int Index)
+  public void CmdUnit_Spawn(GameObject unit)
   {
     print("it gets to CmdUnit_Spawn");
-    GameObject unit_test = Instantiate(card_tier1, new Vector2(0, 0), Quaternion.identity);
+//GameObject unit = GameObject.Find("Button_PlayerInventory_Slot1").transform.GetChild(0).gameObject;
+    GameObject unit_test = Instantiate(unit , new Vector2(0, 0), Quaternion.identity);
     NetworkServer.Spawn(unit_test, connectionToClient);
-    Script_ShowUnit s1 = unit_test.GetComponent<Script_ShowUnit>();
-    s1.GoRequest(inventory_Unit[Index]);
+
+
+
     print("alles hat gut geklapt mit Spawn!!!");
     RpcShowUnit(unit_test);
 
 
 
-    
+
   }
   [ClientRpc]
   void RpcShowUnit(GameObject Value)

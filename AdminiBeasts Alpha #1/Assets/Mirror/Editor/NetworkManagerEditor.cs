@@ -71,7 +71,7 @@ namespace Mirror
             {
                 if (newGameObject != null && !newGameObject.GetComponent<NetworkIdentity>())
                 {
-                    Debug.LogError($"Prefab {newGameObject} cannot be added as spawnable as it doesn't have a NetworkIdentity.");
+                    Debug.LogError($"Prefab {newGameObject} cannot be added as spawnable as it doesn't have a NetworkIdentity."); 
                     return;
                 }
                 prefab.objectReferenceValue = newGameObject;
