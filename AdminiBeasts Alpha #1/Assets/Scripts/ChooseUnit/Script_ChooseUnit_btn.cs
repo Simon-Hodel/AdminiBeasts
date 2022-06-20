@@ -26,11 +26,22 @@ public class Script_ChooseUnit_btn : NetworkBehaviour
     inv_list.Add(inv4);
    
   }
+  /// <summary>
+  /// Choose_rn is activated once the player has choosen either Bacteria or Virus form the panel.
+  /// Then for that the goRequest method is beeing called.
+  /// The unit_rn which is seen several times over the whole Project at this time, is descided throught this action.
+  /// </summary>
+  
   public void Choose_rn(Object_Tier1_Unit value){
   unit_rn = value;
    btn_choose.GetComponent<Image>().sprite = unit_rn.unit_image;
    ifunitselected = true;
   }
+  /// <summary>
+  /// If the choose unit for inventory field is Clicked, several things happen.
+  /// the scriptable object will try to display its invormation through a Gameobject called card_tier1.
+  /// after the programm finds the playermanager for the current client and runns the method CmdUnit_Spawn.
+  /// </summary>
   public void Onclick() 
   {
     print("Script Choose Unit btn "+ unit_rn);

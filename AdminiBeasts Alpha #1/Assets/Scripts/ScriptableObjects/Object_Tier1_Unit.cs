@@ -6,7 +6,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New_Tier1 Unit", menuName = "Tier1/Unit")]
 public class Object_Tier1_Unit : ScriptableObject
 {
-
+/// <summary>
+/// Description of the Unit. Variables are asigned in inspector.
+/// </summary>
   public string unit_name;
   public string unit_description;
   public Sprite unit_image;
